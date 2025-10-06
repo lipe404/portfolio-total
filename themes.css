@@ -1,0 +1,1035 @@
+/* ===== VARIÁVEIS GLOBAIS ===== */
+:root {
+  /* Cyberpunk */
+  --cyber-primary: #ff00ff;
+  --cyber-secondary: #00ffff;
+  --cyber-accent: #8a2be2;
+  --cyber-bg: #0a0a0a;
+  --cyber-surface: #1a1a2e;
+
+  /* Vaporwave */
+  --vapor-primary: #ff006e;
+  --vapor-secondary: #8338ec;
+  --vapor-accent: #3a86ff;
+  --vapor-bg: #240046;
+  --vapor-surface: #3c096c;
+
+  /* Y2K */
+  --y2k-primary: #00ff00;
+  --y2k-secondary: #ff0080;
+  --y2k-accent: #0080ff;
+  --y2k-bg: #000000;
+  --y2k-surface: #1a1a1a;
+
+  /* Dark Mode */
+  --dark-primary: #6366f1;
+  --dark-secondary: #8b5cf6;
+  --dark-accent: #06b6d4;
+  --dark-bg: #111827;
+  --dark-surface: #1f2937;
+
+  /* Rock & Roll */
+  --rock-primary: #dc2626;
+  --rock-secondary: #fbbf24;
+  --rock-accent: #f59e0b;
+  --rock-bg: #0f0f0f;
+  --rock-surface: #1c1c1c;
+
+  /* Psicodélico */
+  --psyche-primary: #ff1493;
+  --psyche-secondary: #00ff7f;
+  --psyche-accent: #ff4500;
+  --psyche-bg: #2d1b69;
+  --psyche-surface: #4c1d95;
+
+  /* Medieval */
+  --medieval-primary: #d4af37;
+  --medieval-secondary: #8b4513;
+  --medieval-accent: #cd853f;
+  --medieval-bg: #2d1810;
+  --medieval-surface: #3d2817;
+
+  /* Brasileira */
+  --brazil-primary: #009739;
+  --brazil-secondary: #fedd00;
+  --brazil-accent: #002776;
+  --brazil-bg: #0d4f2c;
+  --brazil-surface: #1a5c3a;
+
+  /* Arcaico */
+  --arcane-primary: #9333ea;
+  --arcane-secondary: #7c3aed;
+  --arcane-accent: #a855f7;
+  --arcane-bg: #1e1b4b;
+  --arcane-surface: #312e81;
+
+  /* Glitch */
+  --glitch-primary: #ff0000;
+  --glitch-secondary: #00ff00;
+  --glitch-accent: #0000ff;
+  --glitch-bg: #000000;
+  --glitch-surface: #111111;
+}
+
+/* ===== RESET E BASE ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+}
+
+/* ===== TEMA CYBERPUNK ===== */
+[data-theme="cyberpunk"] {
+  font-family: "Share Tech Mono", monospace;
+  background: linear-gradient(
+    45deg,
+    var(--cyber-bg),
+    var(--cyber-surface),
+    #16213e
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  color: var(--cyber-secondary);
+}
+
+[data-theme="cyberpunk"] .theme-background {
+  background-image: linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: gridMove 20s linear infinite;
+}
+
+[data-theme="cyberpunk"] .header-icon::before {
+  content: "\f120"; /* fa-terminal */
+}
+
+[data-theme="cyberpunk"] .header-text {
+  background: linear-gradient(
+    45deg,
+    var(--cyber-primary),
+    var(--cyber-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== TEMA VAPORWAVE ===== */
+[data-theme="vaporwave"] {
+  font-family: "Righteous", cursive;
+  background: linear-gradient(
+    45deg,
+    var(--vapor-bg),
+    var(--vapor-surface),
+    #5a189a
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  color: var(--vapor-primary);
+}
+
+[data-theme="vaporwave"] .theme-background {
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 0, 110, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(131, 56, 236, 0.3) 0%,
+      transparent 50%
+    ),
+    linear-gradient(180deg, transparent 0%, rgba(58, 134, 255, 0.1) 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: vaporFloat 15s ease-in-out infinite;
+}
+
+[data-theme="vaporwave"] .header-icon::before {
+  content: "\f185"; /* fa-sun */
+}
+
+[data-theme="vaporwave"] .header-text {
+  background: linear-gradient(
+    45deg,
+    var(--vapor-primary),
+    var(--vapor-secondary),
+    var(--vapor-accent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+}
+
+/* ===== TEMA Y2K ===== */
+[data-theme="y2k"] {
+  font-family: "Fredoka One", cursive;
+  background: linear-gradient(
+    45deg,
+    var(--y2k-bg),
+    var(--y2k-surface),
+    #333333
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 6s ease infinite;
+  color: var(--y2k-primary);
+}
+
+[data-theme="y2k"] .theme-background {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 2px,
+    rgba(0, 255, 0, 0.03) 4px
+  );
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: scanlines 0.1s linear infinite;
+}
+
+[data-theme="y2k"] .header-icon::before {
+  content: "\f51f"; /* fa-compact-disc */
+}
+
+[data-theme="y2k"] .header-text {
+  background: linear-gradient(
+    45deg,
+    var(--y2k-primary),
+    var(--y2k-secondary),
+    var(--y2k-accent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px var(--y2k-primary));
+}
+
+/* ===== TEMA DARK MODE ===== */
+[data-theme="dark"] {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(
+    45deg,
+    var(--dark-bg),
+    var(--dark-surface),
+    #374151
+  );
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .theme-background {
+  background: radial-gradient(
+      circle at 25% 25%,
+      rgba(99, 102, 241, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(139, 92, 246, 0.1) 0%,
+      transparent 50%
+    );
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+[data-theme="dark"] .header-icon::before {
+  content: "\f186"; /* fa-moon */
+}
+
+[data-theme="dark"] .header-text {
+  background: linear-gradient(
+    45deg,
+    var(--dark-primary),
+    var(--dark-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== TEMA ROCK & ROLL ===== */
+[data-theme="rock"] {
+  font-family: "Nosifer", cursive;
+  background: linear-gradient(
+    45deg,
+    var(--rock-bg),
+    var(--rock-surface),
+    #2d1b1b
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  color: var(--rock-primary);
+}
+
+[data-theme="rock"] .theme-background {
+  background-image: radial-gradient(
+      circle at 30% 70%,
+      rgba(220, 38, 38, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(251, 191, 36, 0.2) 0%,
+      transparent 50%
+    );
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: rockPulse 4s ease-in-out infinite;
+}
+
+[data-theme="rock"] .header-icon::before {
+  content: "\f7a6"; /* fa-guitar */
+}
+
+[data-theme="rock"] .header-text {
+  background: linear-gradient(
+    45deg,
+    var(--rock-primary),
+    var(--rock-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px var(--rock-primary);
+  transform: rotate(-2deg);
+}
+
+/* ===== TEMA PSICODÉLICO ===== */
+[data-theme="psychedelic"] {
+  font-family: "Fredoka One", cursive;
+  background: linear-gradient(
+    45deg,
+    var(--psyche-bg),
+    var(--psyche-surface),
+    #7c3aed
+  );
+  background-size: 400% 400%;
+  animation: psychedelicShift 3s ease infinite;
+  color: var(--psyche-primary);
+}
+
+[data-theme="psychedelic"] .theme-background {
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 20, 147, 0.4) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(0, 255, 127, 0.4) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 69, 0, 0.3) 0%,
+      transparent 60%
+    );
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: psychedelicFloat 8s ease-in-out infinite;
+}
+
+[data-theme="psychedelic"] .header-icon::before {
+  content: "\f06e"; /* fa-eye */
+}
+
+[data-theme="psychedelic"] .header-text {
+  background: linear-gradient(
+    45deg,
+    var(--psyche-primary),
+    var(--psyche-secondary),
+    var(--psyche-accent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: psychedelicText 2s ease-in-out infinite alternate;
+}
+
+/* ===== TEMA MEDIEVAL ===== */
+[data-theme="medieval"] {
+  font-family: "MedievalSharp", cursive;
+  background: linear-gradient(
+    45deg,
+    var(--medieval-bg),
+    var(--medieval-surface),
+    #4a3728
+  );
+  color: var(--medieval-primary);
+}
+
+[data-theme="medieval"] .theme-background {
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(212, 175, 55, 0.1) 0%,
+    transparent 70%
+  );
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+[data-theme="medieval"] .header-icon::before {
+  content: "\f521"; /* fa-crown */
+}
+
+[data-theme="medieval"] .header-text {
+  background: linear-gradient(
+    45deg,
+    var(--medieval-primary),
+    var(--medieval-accent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 15px var(--medieval-primary);
+}
+
+/* ===== TEMA BRASILEIRA ===== */
+[data-theme="brazilian"] {
+  font-family: "Righteous", cursive;
+  background: linear-gradient(
+    45deg,
+    var(--brazil-bg),
+    var(--brazil-surface),
+    #2d5a3d
+  );
+  color: var(--brazil-secondary);
+}
+
+[data-theme="brazilian"] .theme-background {
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(0, 151, 57, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(254, 221, 0, 0.2) 0%,
+      transparent 50%
+    );
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: brazilianSamba 6s ease-in-out infinite;
+}
+
+[data-theme="brazilian"] .header-icon::before {
+  content: "\f74d"; /* fa-flag */
+}
+
+[data-theme="brazilian"] .header-text {
+  background: linear-gradient(
+    45deg,
+    var(--brazil-primary),
+    var(--brazil-secondary),
+    var(--brazil-accent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== TEMA ARCAICO ===== */
+[data-theme="arcane"] {
+  font-family: "Creepster", cursive;
+  background: linear-gradient(
+    45deg,
+    var(--arcane-bg),
+    var(--arcane-surface),
+    #4338ca
+  );
+  color: var(--arcane-primary);
+}
+
+[data-theme="arcane"] .theme-background {
+  background: radial-gradient(
+      circle at 25% 75%,
+      rgba(147, 51, 234, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(124, 58, 237, 0.3) 0%,
+      transparent 50%
+    );
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: arcaneFloat 12s ease-in-out infinite;
+}
+
+[data-theme="arcane"] .header-icon::before {
+  content: "\f0d0"; /* fa-magic */
+}
+
+[data-theme="arcane"] .header-text {
+  background: linear-gradient(
+    45deg,
+    var(--arcane-primary),
+    var(--arcane-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px var(--arcane-primary));
+}
+
+/* ===== TEMA GLITCH ===== */
+[data-theme="glitch"] {
+  font-family: "Courier New", monospace;
+  background: var(--glitch-bg);
+  color: var(--glitch-primary);
+  animation: glitchBody 0.3s infinite;
+}
+
+[data-theme="glitch"] .theme-background {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 0, 0, 0.1) 2px,
+    rgba(255, 0, 0, 0.1) 4px
+  );
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: glitchBg 0.1s infinite;
+}
+
+[data-theme="glitch"] .header-icon::before {
+  content: "\f188"; /* fa-bug */
+}
+
+[data-theme="glitch"] .header-text {
+  animation: glitchText 0.5s infinite;
+  color: var(--glitch-primary);
+  text-shadow: 2px 0 var(--glitch-secondary), -2px 0 var(--glitch-accent);
+}
+
+/* ===== COMPONENTES UNIVERSAIS ===== */
+.theme-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.theme-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(
+    45deg,
+    var(--cyber-primary, #ff00ff),
+    var(--cyber-secondary, #00ffff)
+  );
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.theme-menu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 1rem;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.theme-menu-title {
+  color: white;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.theme-options {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.theme-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.theme-option.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Cards e outros componentes */
+.project-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.project-card:hover::before {
+  left: 100%;
+}
+
+.tech-tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: inherit;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.theme-select {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: inherit;
+  border-radius: 5px;
+  padding: 0.75rem;
+}
+
+.theme-select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.filter-container {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.achievement-tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.2);
+  color: #ff4444;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loading-text {
+  font-family: "Orbitron", monospace;
+  font-size: 2rem;
+  color: #00ffff;
+  animation: loadingPulse 1s ease-in-out infinite;
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 20px);
+  }
+}
+
+@keyframes vaporFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(1deg);
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes rockPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes psychedelicShift {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes psychedelicFloat {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.1);
+  }
+}
+
+@keyframes psychedelicText {
+  0% {
+    filter: hue-rotate(0deg) saturate(1);
+  }
+  100% {
+    filter: hue-rotate(360deg) saturate(2);
+  }
+}
+
+@keyframes brazilianSamba {
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes arcaneFloat {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.02);
+  }
+}
+
+@keyframes glitchBody {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-2px, 2px);
+  }
+  20% {
+    transform: translate(2px, -2px);
+  }
+  30% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  50% {
+    transform: translate(-2px, 2px);
+  }
+  60% {
+    transform: translate(2px, -2px);
+  }
+  70% {
+    transform: translate(-2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  90% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes glitchBg {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-5px, 5px);
+  }
+  20% {
+    transform: translate(5px, -5px);
+  }
+  30% {
+    transform: translate(-5px, 5px);
+  }
+  40% {
+    transform: translate(5px, -5px);
+  }
+  50% {
+    transform: translate(-5px, 5px);
+  }
+  60% {
+    transform: translate(5px, -5px);
+  }
+  70% {
+    transform: translate(-5px, 5px);
+  }
+  80% {
+    transform: translate(5px, -5px);
+  }
+  90% {
+    transform: translate(-5px, 5px);
+  }
+}
+
+@keyframes glitchText {
+  0%,
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  30% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  40% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes loadingPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .theme-selector {
+    top: 10px;
+    right: 10px;
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .theme-menu {
+    right: -10px;
+    min-width: 180px;
+  }
+
+  .project-card {
+    margin-bottom: 1rem;
+  }
+
+  .title-glow {
+    font-size: 1.5rem;
+  }
+
+  .modal-content {
+    padding: 1rem;
+    margin: 1rem;
+  }
+}
