@@ -2,7 +2,7 @@
   {
     "titulo": "LP - Expansão e Negócios - UniÚnica",
     "link": "https://lp-expansao-negocios.netlify.app/",
-    "repositorio": "https://github.com/seu-usuario/lp-uniunica",
+    "repositorio": "https://github.com/lipe404/lp-uniunica",
     "imagem": "assets/images/lp-uniunica.png",
     "imagens": [
       "assets/images/lp-uniunica.png",
@@ -16,7 +16,7 @@
   {
     "titulo": "LP - Dinamica Empresas",
     "link": "https://dinamicaempresas.com.br/",
-    "repositorio": "https://github.com/seu-usuario/dinamica-empresas",
+    "repositorio": "https://github.com/lipe404/dinamica-empresas",
     "imagem": "assets/images/lp-dinamica.png",
     "imagens": [
       "assets/images/lp-dinamica.png",
@@ -29,7 +29,7 @@
   {
     "titulo": "Jornada Leitores",
     "link": "https://jornada-leitores.netlify.app/",
-    "repositorio": "https://github.com/seu-usuario/jornada-leitores",
+    "repositorio": "https://github.com/lipe404/jornada-leitores",
     "imagem": "assets/images/jornada-leitores.png",
     "imagens": [
       "assets/images/jornada-leitores.png",
@@ -57,7 +57,7 @@
   {
     "titulo": "LP - Educa Mais",
     "link": "https://sejaparceiroeducamais.com.br/",
-    "repositorio": "https://github.com/seu-usuario/educa-mais",
+    "repositorio": "https://github.com/lipe404/educa-mais",
     "imagem": "assets/images/educamais.png",
     "descricao": "Landing page institucional para programa de parceiros da Educa Mais. Design responsivo com foco em conversão e experiência do usuário otimizada para diferentes dispositivos.",
     "tecnologias": ["Tailwind CSS", "JavaScript", "HTML5", "CSS3"],
@@ -81,5 +81,205 @@
       "Web Audio API"
     ],
     "classificacao": "Front-end"
+  },
+  {
+    "titulo": "Maze 3D - Pygame",
+    "link": "https://github.com/lipe404/maze3d-pygame",
+    "repositorio": "https://github.com/lipe404/maze3d-pygame",
+    "imagem": "assets/images/maze3d.png",
+    "imagens": [
+      "assets/images/maze3d.png",
+      "assets/images/maze3d-gameplay.png",
+      "assets/images/maze3d-menu.png"
+    ],
+    "descricao": "Jogo de labirinto 3D desenvolvido em Python com Pygame. Apresenta gráficos pseudo-3D, sistema de colisão, diferentes níveis de dificuldade e mecânicas de exploração imersivas.",
+    "tecnologias": ["Python", "Pygame", "OpenGL", "NumPy"],
+    "classificacao": "Game Development"
+  },
+  {
+    "titulo": "Cupcake Game",
+    "link": "https://github.com/lipe404/cupcake-game",
+    "repositorio": "https://github.com/lipe404/cupcake-game",
+    "imagem": "assets/images/cupcake.png",
+    "imagens": [
+      "assets/images/cupcake.png",
+      "assets/images/cupcake-gameplay.png"
+    ],
+    "descricao": "Jogo casual e divertido sobre cupcakes com mecânicas simples e viciantes. Inclui sistema de pontuação, power-ups especiais e design colorido que proporciona uma experiência relaxante.",
+    "tecnologias": ["JavaScript", "HTML5 Canvas", "CSS3", "Web Audio API"],
+    "classificacao": "Game Development"
+  },
+  {
+    "titulo": "Gerador de Sitemap",
+    "link": "https://github.com/lipe404/sitemap-generator",
+    "repositorio": "https://github.com/lipe404/sitemap-generator",
+    "imagem": "assets/images/sitemap-generator.png",
+    "descricao": "Ferramenta automatizada para geração de sitemaps XML. Crawl inteligente de websites, detecção automática de URLs, configurações personalizáveis e exportação em múltiplos formatos para otimização SEO.",
+    "tecnologias": ["Python", "BeautifulSoup", "Requests", "XML", "Selenium"],
+    "classificacao": "Back-end"
+  },
+  {
+    "titulo": "Conversor Texto em Voz",
+    "link": "https://github.com/lipe404/text-to-speech",
+    "repositorio": "https://github.com/lipe404/text-to-speech",
+    "imagem": "assets/images/text-to-speech.png",
+    "descricao": "Aplicação web para conversão de texto em áudio com múltiplas vozes e idiomas. Interface intuitiva, controles de velocidade e tom, download de arquivos de áudio e suporte a textos longos.",
+    "tecnologias": ["JavaScript", "Web Speech API", "HTML5", "CSS3", "Node.js"],
+    "classificacao": "Front-end"
+  },
+  {
+    "titulo": "Anameda Dashboard",
+    "link": "https://github.com/lipe404/anameda-streamlit",
+    "repositorio": "https://github.com/lipe404/anameda-streamlit",
+    "imagem": "assets/images/anameda.png",
+    "imagens": [
+      "assets/images/anameda.png",
+      "assets/images/anameda-analytics.png",
+      "assets/images/anameda-reports.png"
+    ],
+    "descricao": "Dashboard interativo conectado à API do Meta (Facebook) para análise de dados de marketing digital. Visualizações em tempo real, métricas de performance, relatórios automatizados e insights de campanhas publicitárias.",
+    "tecnologias": [
+      "Python",
+      "Streamlit",
+      "Meta API",
+      "Pandas",
+      "Plotly",
+      "Facebook SDK"
+    ],
+    "classificacao": "Back-end"
+  },
+  {
+    "titulo": "Finance Dashboard",
+    "link": "https://github.com/lipe404/finance-dashboard",
+    "repositorio": "https://github.com/lipe404/finance-dashboard",
+    "imagem": "assets/images/finance-dashboard.png",
+    "imagens": [
+      "assets/images/finance-dashboard.png",
+      "assets/images/finance-charts.png",
+      "assets/images/finance-reports.png"
+    ],
+    "descricao": "Painel financeiro completo para controle de investimentos e gastos pessoais. Gráficos interativos, categorização automática, alertas de orçamento e integração com APIs de cotações em tempo real.",
+    "tecnologias": [
+      "React",
+      "Chart.js",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "API REST"
+    ],
+    "classificacao": "Full-stack"
+  },
+  {
+    "titulo": "Nosso Enxoval",
+    "link": "https://github.com/lipe404/nosso-enxoval",
+    "repositorio": "https://github.com/lipe404/nosso-enxoval",
+    "imagem": "assets/images/nosso-enxoval.png",
+    "imagens": [
+      "assets/images/nosso-enxoval.png",
+      "assets/images/nosso-enxoval-lista.png"
+    ],
+    "descricao": "Plataforma para organização de lista de casamento digital. Sistema de presentes, controle de convidados, pagamentos online integrados e interface personalizada para noivos e padrinhos.",
+    "tecnologias": ["Vue.js", "Firebase", "Stripe API", "Vuetify", "PWA"],
+    "classificacao": "Full-stack"
+  },
+  {
+    "titulo": "Sudokinho",
+    "link": "https://github.com/lipe404/sudokinho",
+    "repositorio": "https://github.com/lipe404/sudokinho",
+    "imagem": "assets/images/sudokinho.png",
+    "imagens": [
+      "assets/images/sudokinho.png",
+      "assets/images/sudokinho-game.png"
+    ],
+    "descricao": "Jogo de Sudoku interativo com múltiplos níveis de dificuldade. Gerador automático de puzzles, sistema de dicas, cronômetro, validação em tempo real e ranking de melhores tempos.",
+    "tecnologias": [
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Local Storage",
+      "Canvas API"
+    ],
+    "classificacao": "Game Development"
+  },
+  {
+    "titulo": "InfoZ All",
+    "link": "https://github.com/lipe404/infoz-all",
+    "repositorio": "https://github.com/lipe404/infoz-all",
+    "imagem": "assets/images/infoz-all.png",
+    "descricao": "Agregador de informações e notícias com sistema de filtragem inteligente. Coleta automática de dados de múltiplas fontes, categorização por IA e interface personalizada para consumo de conteúdo.",
+    "tecnologias": [
+      "Python",
+      "Scrapy",
+      "Django",
+      "PostgreSQL",
+      "Redis",
+      "Celery"
+    ],
+    "classificacao": "Full-stack"
+  },
+  {
+    "titulo": "Goles",
+    "link": "https://github.com/lipe404/goles",
+    "repositorio": "https://github.com/lipe404/goles",
+    "imagem": "assets/images/goles.png",
+    "imagens": ["assets/images/goles.png", "assets/images/goles-stats.png"],
+    "descricao": "Aplicativo para acompanhamento de resultados de futebol em tempo real. Estatísticas detalhadas, notificações push, calendário de jogos e análises de performance de times e jogadores.",
+    "tecnologias": [
+      "React Native",
+      "Node.js",
+      "Socket.io",
+      "MongoDB",
+      "Push Notifications"
+    ],
+    "classificacao": "Mobile"
+  },
+  {
+    "titulo": "Vatris",
+    "link": "https://github.com/lipe404/vatris",
+    "repositorio": "https://github.com/lipe404/vatris",
+    "imagem": "assets/images/vatris.png",
+    "descricao": "Clone moderno do clássico Tetris com mecânicas aprimoradas. Múltiplos modos de jogo, efeitos visuais, sistema de níveis progressivos, trilha sonora dinâmica e controles responsivos.",
+    "tecnologias": [
+      "JavaScript",
+      "Canvas API",
+      "Web Audio API",
+      "CSS3",
+      "Local Storage"
+    ],
+    "classificacao": "Game Development"
+  },
+  {
+    "titulo": "AppScript Automation",
+    "link": "https://github.com/lipe404/appscript-automation",
+    "repositorio": "https://github.com/lipe404/appscript-automation",
+    "imagem": "assets/images/appscript.png",
+    "descricao": "Conjunto de scripts para automação do Google Workspace. Automatização de planilhas, envio de emails em massa, geração de relatórios e integração entre diferentes serviços Google.",
+    "tecnologias": [
+      "Google Apps Script",
+      "JavaScript",
+      "Google Sheets API",
+      "Gmail API",
+      "Drive API"
+    ],
+    "classificacao": "Automation"
+  },
+  {
+    "titulo": "Kobrinha Epiléptica",
+    "link": "https://github.com/lipe404/kobrinha-epileptica",
+    "repositorio": "https://github.com/lipe404/kobrinha-epileptica",
+    "imagem": "assets/images/kobrinha.png",
+    "imagens": [
+      "assets/images/kobrinha.png",
+      "assets/images/kobrinha-gameplay.png"
+    ],
+    "descricao": "Versão psicodélica do clássico jogo da cobrinha com efeitos visuais extremos. Cores neon pulsantes, trilha sonora eletrônica, power-ups especiais e modo multiplayer local.",
+    "tecnologias": [
+      "JavaScript",
+      "Canvas API",
+      "Web Audio API",
+      "CSS Animations",
+      "WebGL"
+    ],
+    "classificacao": "Game Development"
   }
 ]

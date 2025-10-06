@@ -18,6 +18,49 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentCarousels = {};
   let currentTheme = localStorage.getItem("portfolio-theme") || "cyberpunk";
 
+  // Imagem padrão para projetos
+  const DEFAULT_PROJECT_IMAGE =
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&crop=entropy&auto=format&q=80";
+
+  // Função para verificar se imagem existe e carregar imagem padrão se necessário
+  function getValidImageUrl(imageUrl, fallbackUrl = DEFAULT_PROJECT_IMAGE) {
+    return new Promise((resolve) => {
+      if (!imageUrl) {
+        resolve(fallbackUrl);
+        return;
+      }
+
+      const img = new Image();
+      img.onload = () => resolve(imageUrl);
+      img.onerror = () => {
+        console.warn(
+          `Imagem não encontrada: ${imageUrl}. Usando imagem padrão.`
+        );
+        resolve(fallbackUrl);
+      };
+      img.src = imageUrl;
+    });
+  }
+
+  // Função para processar todas as imagens de um projeto
+  async function processProjectImages(project) {
+    // Processar imagem principal
+    project.imagem = await getValidImageUrl(project.imagem);
+
+    // Processar array de imagens se existir
+    if (project.imagens && Array.isArray(project.imagens)) {
+      const processedImages = await Promise.all(
+        project.imagens.map((img) => getValidImageUrl(img))
+      );
+      project.imagens = processedImages;
+    } else {
+      // Se não tiver array de imagens, criar um com a imagem principal
+      project.imagens = [project.imagem];
+    }
+
+    return project;
+  }
+
   // Inicializar tema
   initializeTheme();
 
@@ -100,7 +143,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      allProjects = await response.json();
+      const rawProjects = await response.json();
+
+      // Processar imagens de todos os projetos
+      allProjects = await Promise.all(
+        rawProjects.map((project) => processProjectImages(project))
+      );
+
       populateFilters(allProjects);
       renderProjects(allProjects);
     } catch (error) {
@@ -109,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="col-span-full text-center p-8">
                     <i class="fas fa-exclamation-triangle text-red-500 text-4xl mb-4"></i>
                     <p class="text-red-400 text-lg">Erro ao carregar projetos</p>
+                    <p class="text-sm opacity-75 mt-2">Verifique sua conexão e tente novamente</p>
                 </div>
             `;
     }
@@ -123,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="col-span-full text-center p-8">
                     <i class="fas fa-search text-4xl mb-4 opacity-50"></i>
                     <p class="text-lg opacity-75">Nenhum projeto encontrado</p>
+                    <p class="text-sm opacity-50 mt-2">Tente ajustar os filtros de busca</p>
                 </div>
             `;
       return;
@@ -130,6 +181,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     projects.forEach((project, index) => {
       const hasMultipleImages = project.imagens && project.imagens.length > 1;
+
+      // Determinar ícone baseado na classificação
+      const classificationIcons = {
+        "Front-end": "fas fa-palette",
+        "Back-end": "fas fa-server",
+        "Full-stack": "fas fa-layer-group",
+        "Game Development": "fas fa-gamepad",
+        Mobile: "fas fa-mobile-alt",
+        Automation: "fas fa-cogs",
+      };
+
+      const icon = classificationIcons[project.classificacao] || "fas fa-code";
 
       const projectCard = `
                 <div class="project-card cursor-pointer" onclick="openProjectModal(${index})">
@@ -139,13 +202,16 @@ document.addEventListener("DOMContentLoaded", () => {
                             ? createCarousel(project, index)
                             : createSingleImage(project)
                         }
+                        <div class="absolute top-2 right-2 bg-black bg-opacity-50 rounded-full p-2">
+                            <i class="${icon} text-white text-sm"></i>
+                        </div>
                     </div>
 
                     <h3 class="text-xl font-bold mb-3">
                         <i class="fas fa-code mr-2"></i>${project.titulo}
                     </h3>
 
-                    <p class="text-sm mb-3 opacity-75 line-clamp-2">
+                    <p class="text-sm mb-3 opacity-75 line-clamp-3">
                         ${
                           project.descricao ||
                           "Projeto desenvolvido com tecnologias modernas."
@@ -153,16 +219,24 @@ document.addEventListener("DOMContentLoaded", () => {
                     </p>
 
                     <div class="flex items-center mb-3">
-                        <i class="fas fa-layer-group mr-2"></i>
+                        <i class="${icon} mr-2"></i>
                         <span class="text-sm">${project.classificacao}</span>
                     </div>
 
                     <div class="flex flex-wrap gap-2 mb-4">
                         ${project.tecnologias
+                          .slice(0, 4)
                           .map(
                             (tech) => `<span class="tech-tag">${tech}</span>`
                           )
                           .join("")}
+                        ${
+                          project.tecnologias.length > 4
+                            ? `<span class="tech-tag opacity-75">+${
+                                project.tecnologias.length - 4
+                              }</span>`
+                            : ""
+                        }
                     </div>
 
                     <div class="flex gap-2">
@@ -176,7 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             ? `
                             <a href="${project.repositorio}"  rel="noopener noreferrer"
                                class="py-2 px-3 rounded text-sm bg-white bg-opacity-20 hover:bg-opacity-30 transition-all"
-                               onclick="event.stopPropagation()">
+                               onclick="event.stopPropagation()"
+                               title="Ver código fonte">
                                 <i class="fab fa-github"></i>
                             </a>
                         `
@@ -201,7 +276,8 @@ document.addEventListener("DOMContentLoaded", () => {
                       .map(
                         (img) => `
                         <img src="${img}" alt="${project.titulo}"
-                             class="carousel-slide object-cover w-full h-48 rounded">
+                             class="carousel-slide object-cover w-full h-48 rounded"
+                             loading="lazy">
                     `
                       )
                       .join("")}
@@ -215,6 +291,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button class="carousel-nav carousel-next" data-carousel="${index}" data-direction="next">
                         <i class="fas fa-chevron-right"></i>
                     </button>
+                    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                        ${images
+                          .map(
+                            (_, i) => `
+                            <div class="w-2 h-2 rounded-full bg-white bg-opacity-50 carousel-dot" data-slide="${i}"></div>
+                        `
+                          )
+                          .join("")}
+                    </div>
                 `
                     : ""
                 }
@@ -226,7 +311,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function createSingleImage(project) {
     return `
             <img src="${project.imagem}" alt="${project.titulo}"
-                 class="w-full h-48 object-cover rounded">
+                 class="w-full h-48 object-cover rounded"
+                 loading="lazy">
         `;
   }
 
@@ -238,6 +324,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const carouselId = button.dataset.carousel;
         const direction = button.dataset.direction;
         moveCarousel(carouselId, direction);
+      });
+    });
+
+    // Adicionar navegação por pontos
+    document.querySelectorAll(".carousel-dot").forEach((dot) => {
+      dot.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const carouselContainer = dot.closest(".carousel-container");
+        const carouselId = carouselContainer.dataset.carousel;
+        const slideIndex = parseInt(dot.dataset.slide);
+        goToSlide(carouselId, slideIndex);
       });
     });
   }
@@ -262,14 +359,52 @@ document.addEventListener("DOMContentLoaded", () => {
           : currentCarousels[carouselId] - 1;
     }
 
+    updateCarouselPosition(carouselId);
+  }
+
+  // Ir para slide específico
+  function goToSlide(carouselId, slideIndex) {
+    currentCarousels[carouselId] = slideIndex;
+    updateCarouselPosition(carouselId);
+  }
+
+  // Atualizar posição do carrossel
+  function updateCarouselPosition(carouselId) {
+    const carousel = document.querySelector(`[data-carousel="${carouselId}"]`);
+    const track = carousel.querySelector(".carousel-track");
+    const dots = carousel.querySelectorAll(".carousel-dot");
+
     const translateX = -currentCarousels[carouselId] * 100;
     track.style.transform = `translateX(${translateX}%)`;
+
+    // Atualizar indicadores
+    dots.forEach((dot, index) => {
+      dot.classList.toggle(
+        "bg-opacity-100",
+        index === currentCarousels[carouselId]
+      );
+      dot.classList.toggle(
+        "bg-opacity-50",
+        index !== currentCarousels[carouselId]
+      );
+    });
   }
 
   // Abrir modal do projeto
   window.openProjectModal = function (index) {
     const project = allProjects[index];
     const images = project.imagens || [project.imagem];
+
+    const classificationIcons = {
+      "Front-end": "fas fa-palette",
+      "Back-end": "fas fa-server",
+      "Full-stack": "fas fa-layer-group",
+      "Game Development": "fas fa-gamepad",
+      Mobile: "fas fa-mobile-alt",
+      Automation: "fas fa-cogs",
+    };
+
+    const icon = classificationIcons[project.classificacao] || "fas fa-code";
 
     modalBody.innerHTML = `
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -282,19 +417,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div>
                     <h2 class="text-2xl font-bold mb-4">
-                        ${project.titulo}
+                        <i class="${icon} mr-3"></i>${project.titulo}
                     </h2>
-                    <p class="mb-4 opacity-75">
+                    <p class="mb-4 opacity-75 leading-relaxed">
                         ${project.descricao || "Descrição não disponível."}
                     </p>
                     <div class="mb-4">
-                        <h3 class="text-lg mb-2">Tipo:</h3>
+                        <h3 class="text-lg mb-2 flex items-center">
+                            <i class="fas fa-tag mr-2"></i>Tipo:
+                        </h3>
                         <span class="tech-tag px-3 py-1 rounded">${
                           project.classificacao
                         }</span>
                     </div>
                     <div class="mb-6">
-                        <h3 class="text-lg mb-2">Tecnologias:</h3>
+                        <h3 class="text-lg mb-2 flex items-center">
+                            <i class="fas fa-tools mr-2"></i>Tecnologias:
+                        </h3>
                         <div class="flex flex-wrap gap-2">
                             ${project.tecnologias
                               .map(
@@ -304,16 +443,16 @@ document.addEventListener("DOMContentLoaded", () => {
                               .join("")}
                         </div>
                     </div>
-                    <div class="flex gap-3">
+                    <div class="flex gap-3 flex-wrap">
                         <a href="${project.link}"  rel="noopener noreferrer"
-                           class="py-3 px-6 rounded bg-white bg-opacity-20 hover:bg-opacity-30 transition-all">
+                           class="py-3 px-6 rounded bg-white bg-opacity-20 hover:bg-opacity-30 transition-all flex items-center">
                             <i class="fas fa-external-link-alt mr-2"></i>Ver Projeto
                         </a>
                         ${
                           project.repositorio
                             ? `
                             <a href="${project.repositorio}"  rel="noopener noreferrer"
-                               class="py-3 px-6 rounded bg-white bg-opacity-20 hover:bg-opacity-30 transition-all">
+                               class="py-3 px-6 rounded bg-white bg-opacity-20 hover:bg-opacity-30 transition-all flex items-center">
                                 <i class="fab fa-github mr-2"></i>Código Fonte
                             </a>
                         `
@@ -335,6 +474,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   projectModal.addEventListener("click", (e) => {
     if (e.target === projectModal) {
+      projectModal.classList.remove("active");
+    }
+  });
+
+  // Fechar modal com ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && projectModal.classList.contains("active")) {
       projectModal.classList.remove("active");
     }
   });
@@ -412,7 +558,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Carregar projetos
   loadProjects();
 
-  // Easter eggs para o tema glitch
+  // Easter eggs e efeitos especiais (código anterior mantido)
   let glitchCounter = 0;
   document.addEventListener("click", () => {
     if (currentTheme === "glitch") {
