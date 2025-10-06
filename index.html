@@ -4,6 +4,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Felipe Toledo - Portfolio</title>
+        <meta name="description"
+            content="Portfólio interativo de Felipe Toledo - Desenvolvedor Full Stack">
+        <meta name="theme-color" content="#ff00ff">
+
+        <!-- PWA Manifest -->
+        <link rel="manifest" href="manifest.json">
+
+        <!-- Icons -->
+        <link rel="icon" type="image/png" sizes="32x32"
+            href="assets/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16"
+            href="assets/icons/favicon-16x16.png">
+        <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
         <script src="https://cdn.tailwindcss.com"></script>
         <link
             href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Creepster&family=MedievalSharp&family=Nosifer&family=Fredoka+One&family=Righteous&display=swap"
@@ -16,19 +30,61 @@
     <body data-theme="cyberpunk">
         <!-- Loading Screen -->
         <div id="loading-screen" class="loading-screen">
-            <div class="loading-text">INICIALIZANDO SISTEMA...</div>
+            <div class="loading-content">
+                <div class="loading-text" data-i18n="loading">INICIALIZANDO
+                    SISTEMA...</div>
+                <div class="loading-progress">
+                    <div class="loading-bar"></div>
+                </div>
+            </div>
         </div>
 
         <!-- Theme Background -->
         <div class="theme-background"></div>
 
+        <!-- PWA Install Button -->
+        <div id="pwa-install" class="pwa-install hidden">
+            <button id="pwa-install-btn" class="pwa-install-btn"
+                title="Instalar como App">
+                <i class="fas fa-download mr-2"></i>
+                <span data-i18n="install-app">Instalar App</span>
+            </button>
+        </div>
+
+        <!-- Language Selector -->
+        <div id="language-selector" class="language-selector">
+            <button id="language-toggle" class="language-toggle" title="Idioma">
+                <i class="fas fa-globe"></i>
+            </button>
+            <div id="language-menu" class="language-menu">
+                <h3 class="language-menu-title"
+                    data-i18n="choose-language">Escolha o Idioma</h3>
+                <div class="language-options">
+                    <button class="language-option active" data-lang="pt-BR">
+                        <i class="fas fa-flag"></i>
+                        <span>Português</span>
+                    </button>
+                    <button class="language-option" data-lang="en-US">
+                        <i class="fas fa-flag-usa"></i>
+                        <span>English</span>
+                    </button>
+                    <button class="language-option" data-lang="es-ES">
+                        <i class="fas fa-flag"></i>
+                        <span>Español</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Theme Selector -->
         <div id="theme-selector" class="theme-selector">
-            <button id="theme-toggle" class="theme-toggle" title="Botao de Tema">
+            <button id="theme-toggle" class="theme-toggle"
+                title="Botao de Tema">
                 <i class="fas fa-palette"></i>
             </button>
             <div id="theme-menu" class="theme-menu">
-                <h3 class="theme-menu-title">Escolha seu Tema</h3>
+                <h3 class="theme-menu-title" data-i18n="choose-theme">Escolha
+                    seu Tema</h3>
                 <div class="theme-options">
                     <button class="theme-option" data-theme="cyberpunk">
                         <i class="fas fa-robot"></i>
@@ -70,6 +126,81 @@
                         <i class="fas fa-bug"></i>
                         <span>??????</span>
                     </button>
+                    <button class="theme-option" data-theme="custom">
+                        <i class="fas fa-paint-brush"></i>
+                        <span data-i18n="custom">Personalizado</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gamification Panel -->
+        <div id="gamification-panel" class="gamification-panel">
+            <button id="gamification-toggle" class="gamification-toggle"
+                title="Conquistas">
+                <i class="fas fa-trophy"></i>
+                <span id="xp-display" class="xp-display">0 XP</span>
+            </button>
+            <div id="gamification-menu" class="gamification-menu">
+                <div class="gamification-header">
+                    <h3 data-i18n="achievements">Conquistas</h3>
+                    <div class="level-display">
+                        <span data-i18n="level">Nível</span> <span
+                            id="current-level">1</span>
+                    </div>
+                </div>
+                <div class="xp-bar">
+                    <div id="xp-progress" class="xp-progress"></div>
+                </div>
+                <div id="achievements-list" class="achievements-list">
+                    <!-- Conquistas serão inseridas aqui -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme Customizer -->
+        <div id="theme-customizer" class="theme-customizer">
+            <div class="customizer-header">
+                <h3 data-i18n="customize-theme">🎨 Personalize seu Tema</h3>
+                <button id="close-customizer" class="close-customizer">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="customizer-content">
+                <div class="color-picker">
+                    <label data-i18n="primary-color">Cor Primária:</label>
+                    <input type="color" id="primary-color" value="#ff00ff">
+                </div>
+                <div class="color-picker">
+                    <label data-i18n="secondary-color">Cor Secundária:</label>
+                    <input type="color" id="secondary-color" value="#00ffff">
+                </div>
+                <div class="color-picker">
+                    <label data-i18n="accent-color">Cor de Destaque:</label>
+                    <input type="color" id="accent-color" value="#8a2be2">
+                </div>
+                <div class="font-selector">
+                    <label data-i18n="font-family">Fonte:</label>
+                    <select id="font-family">
+                        <option value="Share Tech Mono">Tech Mono</option>
+                        <option value="Orbitron">Orbitron</option>
+                        <option value="Righteous">Righteous</option>
+                        <option value="Fredoka One">Fredoka One</option>
+                        <option value="MedievalSharp">Medieval Sharp</option>
+                    </select>
+                </div>
+                <div class="animation-selector">
+                    <label data-i18n="animation-speed">Velocidade das
+                        Animações:</label>
+                    <input type="range" id="animation-speed" min="0.5" max="3"
+                        step="0.1" value="1">
+                    <span id="speed-value">1x</span>
+                </div>
+                <div class="customizer-actions">
+                    <button id="save-custom-theme" class="save-custom-theme"
+                        data-i18n="save-theme">Salvar Tema</button>
+                    <button id="reset-custom-theme" class="reset-custom-theme"
+                        data-i18n="reset-theme">Resetar</button>
                 </div>
             </div>
         </div>
@@ -81,18 +212,20 @@
                 <header class="text-center mb-12">
                     <h1 class="title-glow text-4xl md:text-6xl mb-4">
                         <i class="header-icon mr-4"></i>
-                        <span class="header-text">PORTFOLIO</span>
+                        <span class="header-text"
+                            data-i18n="header">PORTFÓLIO</span>
                     </h1>
-                    <p class="subtitle text-lg md:text-xl">
+                    <p class="subtitle text-lg md:text-xl" data-i18n="subtitle">
                         Felipe Toledo - Desenvolvedor Full Stack
                     </p>
                     <div class="mt-4 flex justify-center space-x-4 flex-wrap">
                         <div class="achievement-tag px-3 py-1 rounded m-1">
-                            <span class="achievement-text">LEVEL 29
-                                DEVELOPER</span>
+                            <span class="achievement-text">LEVEL <span
+                                    id="header-level">29</span> DEVELOPER</span>
                         </div>
                         <div class="achievement-tag px-3 py-1 rounded m-1">
-                            <span class="achievement-text">ACHIEVEMENT
+                            <span class="achievement-text"
+                                data-i18n="achievement-unlocked">ACHIEVEMENT
                                 UNLOCKED</span>
                         </div>
                     </div>
@@ -102,27 +235,33 @@
                 <div class="filter-container rounded-lg p-6 mb-8">
                     <h2 class="filter-title text-xl mb-4">
                         <i class="fas fa-filter mr-2"></i>
-                        <span class="filter-text">FILTROS DE BUSCA</span>
+                        <span class="filter-text" data-i18n="filters">FILTROS DE
+                            BUSCA</span>
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label for="filtro-classificacao"
-                                class="block filter-label mb-2">
+                                class="block filter-label mb-2"
+                                data-i18n="project-type">
                                 Tipo de Projeto:
                             </label>
                             <select id="filtro-classificacao"
                                 class="theme-select w-full p-3 rounded">
-                                <option value="todos">Todos os Tipos</option>
+                                <option value="todos"
+                                    data-i18n="all-types">Todos os
+                                    Tipos</option>
                             </select>
                         </div>
                         <div>
                             <label for="filtro-tecnologia"
-                                class="block filter-label mb-2">
+                                class="block filter-label mb-2"
+                                data-i18n="technology">
                                 Tecnologia:
                             </label>
                             <select id="filtro-tecnologia"
                                 class="theme-select w-full p-3 rounded">
-                                <option value="todas">Todas as
+                                <option value="todas"
+                                    data-i18n="all-technologies">Todas as
                                     Tecnologias</option>
                             </select>
                         </div>
@@ -140,13 +279,35 @@
         <!-- Project Modal -->
         <div id="project-modal" class="modal">
             <div class="modal-content">
-                <button id="close-modal" class="modal-close" title="Fechar modal">
+                <button id="close-modal" class="modal-close"
+                    title="Fechar modal">
                     <i class="fas fa-times"></i>
                 </button>
                 <div id="modal-body">
                     <!-- Modal content will be inserted here -->
                 </div>
             </div>
+        </div>
+
+        <!-- Achievement Popup -->
+        <div id="achievement-popup" class="achievement-popup">
+            <div class="achievement-popup-content">
+                <div class="achievement-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="achievement-info">
+                    <h3 class="achievement-title"></h3>
+                    <p class="achievement-description"></p>
+                    <div class="achievement-xp">+<span
+                            class="xp-gained">0</span> XP</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Offline Indicator -->
+        <div id="offline-indicator" class="offline-indicator">
+            <i class="fas fa-wifi-slash mr-2"></i>
+            <span data-i18n="offline-mode">Modo Offline Ativo</span>
         </div>
     </body>
 </html>
