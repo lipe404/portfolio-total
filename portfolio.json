@@ -1,0 +1,85 @@
+[
+  {
+    "titulo": "LP - Expansão e Negócios - UniÚnica",
+    "link": "https://lp-expansao-negocios.netlify.app/",
+    "repositorio": "https://github.com/seu-usuario/lp-uniunica",
+    "imagem": "assets/images/lp-uniunica.png",
+    "imagens": [
+      "assets/images/lp-uniunica.png",
+      "assets/images/lp-uniunica-mobile.png",
+      "assets/images/lp-uniunica-dashboard.png"
+    ],
+    "descricao": "Landing page responsiva desenvolvida para a UniÚnica, focada em expansão e negócios. Implementa integração com APIs para captura de leads e dashboard administrativo para gestão de contatos.",
+    "tecnologias": ["Tailwind CSS", "API", "JavaScript", "HTML5"],
+    "classificacao": "Front-end"
+  },
+  {
+    "titulo": "LP - Dinamica Empresas",
+    "link": "https://dinamicaempresas.com.br/",
+    "repositorio": "https://github.com/seu-usuario/dinamica-empresas",
+    "imagem": "assets/images/lp-dinamica.png",
+    "imagens": [
+      "assets/images/lp-dinamica.png",
+      "assets/images/lp-dinamica-services.png"
+    ],
+    "descricao": "Website corporativo para a Dinâmica Empresas, com design moderno e funcionalidades avançadas de contato. Inclui formulários inteligentes e integração com sistemas de CRM.",
+    "tecnologias": ["Tailwind CSS", "JavaScript", "API", "PHP"],
+    "classificacao": "Full-stack"
+  },
+  {
+    "titulo": "Jornada Leitores",
+    "link": "https://jornada-leitores.netlify.app/",
+    "repositorio": "https://github.com/seu-usuario/jornada-leitores",
+    "imagem": "assets/images/jornada-leitores.png",
+    "imagens": [
+      "assets/images/jornada-leitores.png",
+      "assets/images/jornada-leitores-books.png",
+      "assets/images/jornada-leitores-profile.png"
+    ],
+    "descricao": "Plataforma gamificada para incentivo à leitura, com sistema de conquistas, ranking de usuários e integração com APIs de livros. Permite acompanhar progresso de leitura e descobrir novos títulos.",
+    "tecnologias": ["Tailwind CSS", "API", "JavaScript", "Local Storage"],
+    "classificacao": "Front-end"
+  },
+  {
+    "titulo": "Unidash - UniÚnica",
+    "link": "https://github.com/lipe404/uni_dash/blob/main/app.py",
+    "repositorio": "https://github.com/lipe404/uni_dash",
+    "imagem": "assets/images/unidash.png",
+    "imagens": [
+      "assets/images/unidash.png",
+      "assets/images/unidash-charts.png",
+      "assets/images/unidash-analytics.png"
+    ],
+    "descricao": "Dashboard interativo desenvolvido em Python para análise de dados educacionais. Oferece visualizações dinâmicas, relatórios automatizados e insights em tempo real para gestão acadêmica.",
+    "tecnologias": ["Python", "Streamlit", "Plotly", "Pandas", "API"],
+    "classificacao": "Back-end"
+  },
+  {
+    "titulo": "LP - Educa Mais",
+    "link": "https://sejaparceiroeducamais.com.br/",
+    "repositorio": "https://github.com/seu-usuario/educa-mais",
+    "imagem": "assets/images/educamais.png",
+    "descricao": "Landing page institucional para programa de parceiros da Educa Mais. Design responsivo com foco em conversão e experiência do usuário otimizada para diferentes dispositivos.",
+    "tecnologias": ["Tailwind CSS", "JavaScript", "HTML5", "CSS3"],
+    "classificacao": "Front-end"
+  },
+  {
+    "titulo": "Vapor Games",
+    "link": "https://lipe404.github.io/vaporgames/",
+    "repositorio": "https://github.com/lipe404/vaporgames",
+    "imagem": "assets/images/vaporgames.png",
+    "imagens": [
+      "assets/images/vaporgames.png",
+      "assets/images/vaporgames-catalog.png",
+      "assets/images/vaporgames-game.png"
+    ],
+    "descricao": "Plataforma de jogos online com estética vaporwave. Inclui catálogo de jogos, sistema de pontuação, efeitos visuais avançados e experiência totalmente gamificada.",
+    "tecnologias": [
+      "Tailwind CSS",
+      "JavaScript",
+      "Canvas API",
+      "Web Audio API"
+    ],
+    "classificacao": "Front-end"
+  }
+]
